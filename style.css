@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --slider-padding: 2px;
+  --items-per-screen: 2;
+}
+body {
+  margin: 0;
+  background-color: black;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.container:hover .handles {
+  display: block;
+}
+.slider {
+  display: flex;
+  width: calc(100% - 50 * var(--slider-padding));
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+}
+
+.slider > img {
+  padding: 2px;
+  flex: 0 0 calc(100% / var(--items-per-screen));
+  aspect-ratio: 16 / 9;
+  max-width: calc(100% / var(--items-per-screen));
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.handles {
+  position: absolute;
+  top: 2px;
+  height: calc(100% - 4px);
+  width: calc(24 * var(--slider-padding));
+  border: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  z-index: 10;
+  display: none;
+}
+
+.handles:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.left-handle {
+  left: 0;
+}
+
+.right-handle {
+  right: 0;
+}
+
+.handles i {
+  font-size: 1.5rem;
+  color: white;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+.handles:hover i {
+  font-size: 2.2rem;
+}
+
+.indicator {
+  height: 5px;
+  margin: 25px 48px 20px;
+  gap: 2.8px;
+  width: 100%;
+  display: none;
+}
+.indicator .screen {
+  width: 48px;
+  max-width: 48px;
+  background-color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+.indicator .screen.active {
+  background-color: white;
+}
+@media (min-width: 675px) {
+  :root {
+    --items-per-screen: 3;
+  }
+  .indicator {
+    display: flex;
+    width: 85%;
+  }
+}
+@media (min-width: 992px) {
+  :root {
+    --items-per-screen: 4;
+  }
+  .indicator {
+    width: 60%;
+  }
+}
+@media (min-width: 1200px) {
+  :root {
+    --items-per-screen: 6;
+  }
+  .indicator {
+    width: 600px;
+  }
+}
